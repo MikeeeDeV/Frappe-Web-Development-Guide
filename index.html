@@ -1699,6 +1699,67 @@ h1 { color: red; }</pre>
             { threshold: 0.06 },
         );
         document.querySelectorAll(".section").forEach((el) => io.observe(el));
+
+        // Smooth, replayable details/summary transitions
+        (function enhanceDetails() {
+            document.querySelectorAll('details').forEach(details => {
+                if (details.__enhanced) return;
+                details.__enhanced = true;
+
+                // Collect direct children that are not the summary
+                const contentNodes = Array.from(details.children).filter(c => c.tagName.toLowerCase() !== 'summary');
+                if (!contentNodes.length) return;
+
+                // Create a wrapper and move content into it
+                const wrapper = document.createElement('div');
+                wrapper.className = 'details-body';
+                details.insertBefore(wrapper, contentNodes[0]);
+                contentNodes.forEach(n => wrapper.appendChild(n));
+
+                // Initialize height state
+                if (details.open) {
+                    wrapper.classList.add('open');
+                    wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+                    // allow flexible height after transition
+                    requestAnimationFrame(() => {
+                        const onEnd = () => {
+                            if (details.open) wrapper.style.maxHeight = 'none';
+                            wrapper.removeEventListener('transitionend', onEnd);
+                        };
+                        wrapper.addEventListener('transitionend', onEnd);
+                    });
+                } else {
+                    wrapper.style.maxHeight = '0px';
+                }
+
+                // Toggle handler — animate and replay on every open
+                details.addEventListener('toggle', () => {
+                    if (details.open) {
+                        // set to measured height to animate open
+                        wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+                        wrapper.classList.add('open');
+
+                        // Replay short content animation each time
+                        wrapper.classList.remove('replay');
+                        void wrapper.offsetWidth; // force reflow
+                        wrapper.classList.add('replay');
+
+                        // After transition clear maxHeight so content can grow naturally
+                        const clear = () => {
+                            if (details.open) wrapper.style.maxHeight = 'none';
+                            wrapper.removeEventListener('transitionend', clear);
+                        };
+                        wrapper.addEventListener('transitionend', clear);
+                    } else {
+                        // When closing, ensure we have a fixed px height then collapse to 0
+                        wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+                        void wrapper.offsetHeight; // reflow
+                        wrapper.style.maxHeight = '0px';
+                        wrapper.classList.remove('open');
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 
