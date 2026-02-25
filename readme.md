@@ -730,6 +730,63 @@ frappe.flags.in_test = True  # Shows debug in bench
 
 <br>
 
+## 👨‍💻 Developer
+
+<div align="center">
+
+### Mohamed Ayman
+**Frappe Framework Developer**
+
+<p>
+  <a href="tel:+201021984471">
+    <img src="https://img.shields.io/badge/Phone-+20%20102%20198%204471-25D366?style=for-the-badge&logo=phone&logoColor=white" alt="Phone">
+  </a>
+  <a href="https://wa.me/201118275197">
+    <img src="https://img.shields.io/badge/WhatsApp-+20%20111%20827%205197-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp">
+  </a>
+</p>
+
+<p>
+  <a href="https://github.com/MikeeeDeV">
+    <img src="https://img.shields.io/badge/GitHub-MikeeeDeV-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://www.linkedin.com/feed/">
+    <img src="https://img.shields.io/badge/LinkedIn-Mohamed%20Ayman-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+  </a>
+  <a href="https://www.facebook.com/share/1HTJiZLGYg/">
+    <img src="https://img.shields.io/badge/Facebook-Profile-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook">
+  </a>
+</p>
+
+<p>
+  <a href="https://twitter.com/MohamedAyman">
+    <img src="https://img.shields.io/badge/Twitter-@MohamedAyman-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter">
+  </a>
+  <a href="https://www.instagram.com/mohamedayman/">
+    <img src="https://img.shields.io/badge/Instagram-@mohamedayman-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
+  </a>
+  <a href="https://t.me/mohamedayman">
+    <img src="https://img.shields.io/badge/Telegram-@mohamedayman-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram">
+  </a>
+</p>
+
+<p>
+  <a href="https://stackoverflow.com/users/mohamedayman">
+    <img src="https://img.shields.io/badge/Stack%20Overflow-Mohamed%20Ayman-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow">
+  </a>
+  <a href="https://dev.to/mohamedayman">
+    <img src="https://img.shields.io/badge/Dev.to-@mohamedayman-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white" alt="Dev.to">
+  </a>
+</p>
+
+<br>
+
+**💼 Available for Frappe/ERPNext consulting and custom development**
+
+</div>
+
+---
+
 ## 📄 License
 
 <div align="center">
@@ -763,6 +820,10 @@ frappe.flags.in_test = True  # Shows debug in bench
 
 ### 🌟 Star this guide if you found it helpful!
 
-<sub>Made with passion by the Frappe developer community</sub>
+<sub>Developed by Mohamed Ayman | Frappe Framework Expert</sub>
+
+<br>
+
+**📧 Contact for projects:** [Phone](tel:+201021984471) | [WhatsApp](https://wa.me/201118275197) | [GitHub](https://github.com/MikeeeDeV)
 
 </div>
