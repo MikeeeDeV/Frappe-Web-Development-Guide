@@ -759,19 +759,19 @@ frappe.flags.in_test = True  # Shows debug in bench
 </p>
 
 <p>
-  <a href="https://twitter.com/MohamedAyman">
+  <a href="https://x.com/ayman_moha35360">
     <img src="https://img.shields.io/badge/Twitter-@MohamedAyman-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter">
   </a>
-  <a href="https://www.instagram.com/mohamedayman/">
+  <a href="https://www.instagram.com/mo7amed2ymen?igsh=MTNpeDJ1MDR5cTQ4OQ==">
     <img src="https://img.shields.io/badge/Instagram-@mohamedayman-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
   </a>
-  <a href="https://t.me/mohamedayman">
+  <a href="https://t.me/Melo_pl">
     <img src="https://img.shields.io/badge/Telegram-@mohamedayman-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram">
   </a>
 </p>
 
 <p>
-  <a href="https://stackoverflow.com/users/mohamedayman">
+  <a href="https://stackoverflow.com/users/28003333/mohamed-ayman">
     <img src="https://img.shields.io/badge/Stack%20Overflow-Mohamed%20Ayman-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow">
   </a>
   <a href="https://dev.to/mohamedayman">
@@ -802,7 +802,7 @@ frappe.flags.in_test = True  # Shows debug in bench
 <a href="https://frappe.io">
   <img src="https://img.shields.io/badge/Frappe-Framework-2490E3?style=flat-square&logo=frappe&logoColor=white" alt="Frappe">
 </a>
-<a href="https://erpnext.com">
+<a href="https://frappe.io/erpnext">
   <img src="https://img.shields.io/badge/ERPNext-Platform-0089FF?style=flat-square" alt="ERPNext">
 </a>
 
