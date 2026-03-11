@@ -176,10 +176,16 @@ async function sendToTelegram(text) {
 }
 
 // ─────────────────────────────────────────────────
-// 4. تشغيل كل شيء
+// 4. تشغيل كل شيء فقط إذا وافق المستخدم على الـ Analytics
 // ─────────────────────────────────────────────────
 
-(async function track() {
+let hasTracked = sessionStorage.getItem("telegram_tracked") === "true"; // لمنع التتبع المتكرر مع كل ريفريش
+
+async function trackActivity() {
+    if (hasTracked) return;
+    hasTracked = true;
+    sessionStorage.setItem("telegram_tracked", "true");
+
     // انتظر لودينج الصفحة
     if (document.readyState !== "complete") {
         await new Promise(r => window.addEventListener("load", r, { once: true }));
@@ -192,4 +198,26 @@ async function sendToTelegram(text) {
 
     const message = buildMessage(loc, browser, network);
     await sendToTelegram(message);
-})();
+}
+
+function checkConsentAndTrack() {
+    const consent = localStorage.getItem("cookie_consent");
+    if (consent) {
+        try {
+            const parsed = JSON.parse(consent);
+            if (parsed.prefs && parsed.prefs.analytics) {
+                trackActivity();
+            }
+        } catch (e) {}
+    }
+}
+
+// التحقق من الموافقة السابقة عند تحميل الصفحة
+checkConsentAndTrack();
+
+// الاستماع لحدث الموافقة من نافذة الكوكيز
+window.addEventListener("cookieConsentSaved", (e) => {
+    if (e.detail && e.detail.analytics) {
+        trackActivity();
+    }
+});

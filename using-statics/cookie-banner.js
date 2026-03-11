@@ -443,6 +443,10 @@
         date:  new Date().toISOString(),
       }));
 
+      window.dispatchEvent(new CustomEvent("cookieConsentSaved", {
+        detail: { analytics, marketing }
+      }));
+
       document.getElementById("cb-banner")?.classList.add("out");
       document.getElementById("cb-overlay")?.classList.add("out");
       setTimeout(() => wrap?.remove(), 500);
@@ -461,10 +465,22 @@
     document.getElementById("cb-save").addEventListener("click", () => dismiss("custom"));
 
     // Essential only
-    document.getElementById("cb-reject").addEventListener("click", () => dismiss("necessary"));
+    document.getElementById("cb-reject").addEventListener("click", () => {
+      const an = document.getElementById("cb-analytics");
+      const mk = document.getElementById("cb-marketing");
+      if (an) an.checked = false;
+      if (mk) mk.checked = false;
+      dismiss("necessary");
+    });
 
-    // Click on overlay → essential only
-    document.getElementById("cb-overlay").addEventListener("click", () => dismiss("necessary"));
+    // Click on overlay → accept all
+    document.getElementById("cb-overlay").addEventListener("click", () => {
+      const an = document.getElementById("cb-analytics");
+      const mk = document.getElementById("cb-marketing");
+      if (an) an.checked = true;
+      if (mk) mk.checked = true;
+      dismiss("all");
+    });
   }
 
   // ─── Init ──────────────────────────────────────────────────────────────────
