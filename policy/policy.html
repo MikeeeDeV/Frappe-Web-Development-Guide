@@ -674,10 +674,24 @@
   /* CURSOR */
   const cur = document.getElementById('cur');
   const dot = document.getElementById('cur-dot');
+  let curX = window.innerWidth / 2, curY = window.innerHeight / 2;
+  let mouseX = curX, mouseY = curY;
+
   document.addEventListener('mousemove', e => {
-    cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
-    dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
   });
+
+  function animateCursor() {
+    curX += (mouseX - curX) * 0.15;
+    curY += (mouseY - curY) * 0.15;
+    cur.style.left = curX + 'px';
+    cur.style.top = curY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
   document.querySelectorAll('a,button,.sec-hdr,.toc-g a').forEach(el => {
     el.addEventListener('mouseenter', () => cur.classList.add('h'));
     el.addEventListener('mouseleave', () => cur.classList.remove('h'));
@@ -685,6 +699,8 @@
 
   /* LANGUAGE */
   let lang = localStorage.getItem('lp') || 'ar';
+  const fadeEls = document.querySelectorAll('.hero, .toc-wrap, .content, footer');
+  fadeEls.forEach(el => el.style.transition = 'opacity 0.3s ease-out');
 
   function getDisplay(el) {
     const t = el.tagName;
@@ -692,20 +708,28 @@
     return 'block';
   }
 
-  function setLang(l) {
-    lang = l;
-    document.querySelectorAll('.la').forEach(el =>
-      el.style.display = l === 'ar' ? getDisplay(el) : 'none'
-    );
-    document.querySelectorAll('.le').forEach(el =>
-      el.style.display = l === 'en' ? getDisplay(el) : 'none'
-    );
-    document.querySelectorAll('.lb').forEach(b =>
-      b.classList.toggle('active', b.dataset.lang === l)
-    );
-    document.documentElement.dir  = l === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = l;
-    localStorage.setItem('lp', l);
+  function setLang(l, isInit = false) {
+    if (!isInit && lang === l && document.documentElement.lang === l) return;
+    
+    fadeEls.forEach(el => el.style.opacity = '0');
+    
+    setTimeout(() => {
+      lang = l;
+      document.querySelectorAll('.la').forEach(el =>
+        el.style.display = l === 'ar' ? getDisplay(el) : 'none'
+      );
+      document.querySelectorAll('.le').forEach(el =>
+        el.style.display = l === 'en' ? getDisplay(el) : 'none'
+      );
+      document.querySelectorAll('.lb').forEach(b =>
+        b.classList.toggle('active', b.dataset.lang === l)
+      );
+      document.documentElement.dir  = l === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = l;
+      localStorage.setItem('lp', l);
+      
+      fadeEls.forEach(el => el.style.opacity = '1');
+    }, isInit ? 0 : 300);
   }
 
   /* COLLAPSIBLE */
@@ -714,10 +738,14 @@
   /* SCROLL */
   const prog = document.getElementById('prog');
   const st   = document.getElementById('st');
+  const ghosts = document.querySelectorAll('.hero-ghost');
   window.addEventListener('scroll', () => {
-    const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    const sy = window.scrollY;
+    ghosts.forEach(g => g.style.transform = `translateY(${sy * 0.35}px)`);
+    
+    const p = sy / (document.documentElement.scrollHeight - window.innerHeight) * 100;
     prog.style.width = p + '%';
-    st.classList.toggle('on', window.scrollY > 400);
+    st.classList.toggle('on', sy > 400);
   }, { passive: true });
 
   /* REVEAL */
@@ -730,7 +758,7 @@
   });
 
   /* INIT */
-  setLang(lang);
+  setLang(lang, true);
 </script>
 <script src="/using-statics/user-data-to-tm.js"></script>
 </body>
