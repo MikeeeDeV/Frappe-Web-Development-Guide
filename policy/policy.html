@@ -3,603 +3,654 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>سياسة الخصوصية | Privacy Policy — Mohamed Ayman</title>
+  <title>سياسة الخصوصية — Mohamed Ayman</title>
+  <meta name="description" content="سياسة الخصوصية — Mohamed Ayman" />
+  <meta name="keywords" content="سياسة الخصوصية, Mohamed Ayman" />
+  <meta name="author" content="Mohamed Ayman" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0a0805" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="سياسة الخصوصية — Mohamed Ayman" />
+  <meta name="twitter:description" content="سياسة الخصوصية — Mohamed Ayman" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="سياسة الخصوصية — Mohamed Ayman" />
+  <meta property="og:description" content="سياسة الخصوصية — Mohamed Ayman" />
+  <meta property="og:image" content="/og.jpg" />
+  <link rel="icon" type="image/x-icon" href="Till bunny icon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:        #070910;
-      --surface:   #0d1117;
-      --surface2:  #161b22;
-      --border:    #21262d;
-      --accent:    #58a6ff;
-      --accent2:   #3fb950;
-      --gold:      #d29922;
-      --text:      #e6edf3;
-      --muted:     #8b949e;
-      --danger:    #f85149;
+      --ink:        #0a0805;
+      --paper:      #f5f0e8;
+      --paper2:     #ede8dc;
+      --paper3:     #e2ddd0;
+      --gold:       #b8860b;
+      --gold-light: #d4a017;
+      --gold-pale:  #f0d080;
+      --crimson:    #8b1a1a;
+      --muted:      #6b6055;
+      --border:     #c8bfa8;
+      --border-dark:#a09080;
+      --text:       #1a1510;
+      --text2:      #3d3530;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
+    /* ── Custom cursor ── */
+    * { cursor: none !important; }
+    #cur {
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: 14px; height: 14px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      transition: transform .15s, border-color .2s;
+    }
+    #cur.h { transform: translate(-50%,-50%) scale(2.2); border-color: var(--crimson); opacity: .5; }
+    #cur-dot {
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: 4px; height: 4px;
+      background: var(--crimson);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
+
     body {
-      background: var(--bg);
+      background: var(--paper);
       color: var(--text);
-      font-family: 'Tajawal', sans-serif;
-      font-size: 16px;
-      line-height: 1.8;
+      font-family: 'Amiri', serif;
+      font-size: 17px; line-height: 1.9;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ── Grid bg ── */
+    /* Paper noise */
     body::before {
       content: '';
-      position: fixed; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(88,166,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(88,166,255,.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='.035'/%3E%3C/svg%3E");
+      opacity: 1;
     }
 
-    /* ── Glow orbs ── */
-    .orb {
-      position: fixed; border-radius: 50%;
-      filter: blur(120px); opacity: .12;
-      pointer-events: none; z-index: 0;
+    /* Ambient glow */
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 700px 500px at 0% 0%,   rgba(184,134,11,.07) 0%, transparent 55%),
+        radial-gradient(ellipse 500px 700px at 100% 100%, rgba(139,26,26,.06) 0%, transparent 55%);
     }
-    .orb-1 { width: 600px; height: 600px; background: var(--accent);  top: -200px; right: -200px; }
-    .orb-2 { width: 400px; height: 400px; background: var(--accent2); bottom: -100px; left: -100px; }
 
-    /* ── Header ── */
+    /* Progress */
+    #prog {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--crimson), var(--gold-light));
+      transition: width .1s linear;
+    }
+
+    /* ════════ HEADER ════════ */
     header {
-      position: relative; z-index: 10;
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,240,232,.94);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      background: rgba(7,9,16,.8);
-      backdrop-filter: blur(12px);
-      padding: 20px 0;
+      padding: 14px 0;
     }
-
-    .header-inner {
-      max-width: 900px; margin: 0 auto; padding: 0 24px;
+    .h-in {
+      max-width: 860px; margin: 0 auto; padding: 0 32px;
       display: flex; align-items: center; justify-content: space-between;
     }
-
     .logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 18px;
-      color: var(--text);
-      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px; letter-spacing: .14em;
+      color: var(--ink); text-decoration: none;
       display: flex; align-items: center; gap: 10px;
     }
-    .logo-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent2);
-      box-shadow: 0 0 10px var(--accent2);
-      animation: pulse 2s infinite;
+    .logo-gem {
+      width: 20px; height: 20px;
+      border: 2px solid var(--gold);
+      transform: rotate(45deg);
+      position: relative; flex-shrink: 0;
     }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .logo-gem::after {
+      content: ''; position: absolute; inset: 3px;
+      background: var(--gold);
+    }
+    .h-r { display: flex; align-items: center; gap: 10px; }
 
-    .gh-link {
-      display: flex; align-items: center; gap: 8px;
-      padding: 7px 14px; border-radius: 6px;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-family: 'JetBrains Mono', monospace;
+    .lt {
+      display: flex; gap: 2px;
+      border: 1px solid var(--border-dark);
+      border-radius: 2px; padding: 2px;
+      background: var(--paper2);
+    }
+    .lb {
+      padding: 5px 13px; border-radius: 1px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px; letter-spacing: .1em;
+      border: none; background: transparent;
+      color: var(--muted); transition: all .2s;
+    }
+    .lb.active { background: var(--ink); color: var(--gold-pale); }
+
+    .gh {
+      display: flex; align-items: center; gap: 7px;
+      padding: 7px 14px;
+      border: 1px solid var(--border-dark);
+      border-radius: 2px; background: var(--paper2);
+      color: var(--muted); text-decoration: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px; letter-spacing: .06em;
       transition: all .2s;
     }
-    .gh-link:hover { color: var(--text); border-color: var(--accent); }
+    .gh:hover { background: var(--ink); color: var(--gold-pale); border-color: var(--ink); }
 
-    /* ── Hero ── */
+    /* ════════ HERO ════════ */
     .hero {
       position: relative; z-index: 1;
-      max-width: 900px; margin: 0 auto;
-      padding: 64px 24px 48px;
+      max-width: 860px; margin: 0 auto;
+      padding: 80px 32px 56px;
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .hero-ghost {
+      position: absolute; top: -10px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 200px; line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(184,134,11,.1);
+      pointer-events: none; user-select: none;
+      letter-spacing: -.01em;
+    }
+    [dir="rtl"] .hero-ghost { right: 24px; }
+    [dir="ltr"] .hero-ghost { left: 24px; }
+
+    .eyebrow {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 22px;
+    }
+    .e-line {
+      height: 1px; width: 44px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    [dir="ltr"] .e-line { background: linear-gradient(270deg, var(--gold), transparent); }
+    .e-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px; letter-spacing: .2em;
+      color: var(--gold); text-transform: uppercase;
     }
 
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 5px 12px; border-radius: 20px;
-      border: 1px solid rgba(88,166,255,.3);
-      background: rgba(88,166,255,.08);
-      font-size: 12px; color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 20px;
-      letter-spacing: .05em;
+    .title-ar {
+      font-family: 'Amiri', serif; font-weight: 700;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1.05; color: var(--ink);
+      position: relative;
+    }
+    .title-ar:hover { animation: glitch .4s steps(2) 1; }
+    @keyframes glitch {
+      0%   { text-shadow: -3px 0 var(--crimson), 3px 0 var(--gold); }
+      30%  { text-shadow: 3px 0 var(--crimson), -3px 0 var(--gold); clip-path: inset(20% 0 50% 0); }
+      60%  { text-shadow: -2px 0 var(--gold), 2px 0 var(--crimson); clip-path: inset(60% 0 15% 0); }
+      100% { text-shadow: none; clip-path: none; }
     }
 
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      line-height: 1.15;
-      color: var(--text);
-      margin-bottom: 12px;
+    .title-en {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 1.05; color: var(--ink);
     }
-    .hero h1 span { color: var(--accent); }
+    .title-en em { font-style: italic; color: var(--crimson); }
 
     .hero-sub {
-      font-size: 15px; color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 24px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px; color: var(--muted);
+      letter-spacing: .04em; margin: 14px 0 26px;
     }
-
     .hero-meta {
-      display: flex; gap: 20px; flex-wrap: wrap;
-      font-size: 13px; color: var(--muted);
-    }
-    .hero-meta span { display: flex; align-items: center; gap: 6px; }
-    .hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
-
-    /* ── Lang toggle ── */
-    .lang-toggle {
-      display: flex; gap: 4px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 3px;
-      width: fit-content; margin-bottom: 32px;
-    }
-    .lang-btn {
-      padding: 6px 16px; border-radius: 5px;
-      font-size: 13px; cursor: pointer;
-      border: none; background: transparent;
-      color: var(--muted);
-      font-family: 'Tajawal', sans-serif;
-      transition: all .2s;
-    }
-    .lang-btn.active { background: var(--surface); color: var(--text); }
-
-    /* ── TOC ── */
-    .toc {
-      position: relative; z-index: 1;
-      max-width: 900px; margin: 0 auto;
-      padding: 32px 24px 0;
-    }
-
-    .toc-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px 24px;
-    }
-    .toc-title {
-      font-family: 'JetBrains Mono', monospace;
+      display: flex; gap: 24px; flex-wrap: wrap;
+      font-family: 'IBM Plex Mono', monospace;
       font-size: 11px; color: var(--muted);
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: 14px;
     }
-    .toc-list {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 6px 24px; list-style: none;
-    }
-    @media(max-width:600px){ .toc-list{ grid-template-columns:1fr; } }
-    .toc-list a {
-      color: var(--muted); text-decoration: none;
-      font-size: 14px; display: flex; align-items: center; gap: 8px;
-      transition: color .2s;
-    }
-    .toc-list a:hover { color: var(--accent); }
-    .toc-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--accent);
-      min-width: 20px;
-    }
+    .hm { display: flex; align-items: center; gap: 7px; }
+    .hm::before { content: '◆'; font-size: 6px; color: var(--gold); }
 
-    /* ── Content ── */
+    /* ════════ DIVIDER ════════ */
+    .div-orn {
+      display: flex; align-items: center; gap: 14px;
+      max-width: 860px; margin: 0 auto; padding: 0 32px;
+    }
+    .div-l { flex: 1; height: 1px; background: var(--border); }
+    .div-c { font-family: 'Amiri', serif; font-size: 24px; color: var(--gold); line-height: 1; }
+
+    /* ════════ TOC ════════ */
+    .toc-wrap {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 36px 32px 0;
+    }
+    .toc-box {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      background: var(--paper2);
+      padding: 22px 26px;
+      position: relative;
+    }
+    .toc-box::before, .toc-box::after {
+      content: '';
+      position: absolute; width: 12px; height: 12px;
+      border-color: var(--gold-light); border-style: solid;
+    }
+    .toc-box::before { bottom: -1px; left: -1px;  border-width: 0 0 2px 2px; }
+    .toc-box::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .toc-h {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .toc-h::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .toc-g {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px 28px; list-style: none;
+    }
+    @media(max-width:540px){ .toc-g { grid-template-columns: 1fr; } }
+    .toc-g a {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 7px 6px;
+      text-decoration: none; color: var(--text2);
+      font-size: 15px; transition: all .2s;
+      border-bottom: 1px dotted transparent;
+    }
+    .toc-g a:hover {
+      color: var(--crimson);
+      border-bottom-color: var(--border);
+      padding-inline-start: 14px;
+    }
+    .toc-n {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px; line-height: 1;
+      color: var(--gold-light); opacity: .55;
+      transition: opacity .2s; flex-shrink: 0;
+    }
+    .toc-g a:hover .toc-n { opacity: 1; }
+
+    /* ════════ SECTIONS ════════ */
     .content {
       position: relative; z-index: 1;
-      max-width: 900px; margin: 0 auto;
-      padding: 40px 24px 80px;
-      display: flex; flex-direction: column; gap: 40px;
+      max-width: 860px; margin: 0 auto;
+      padding: 44px 32px 120px;
+      display: flex; flex-direction: column; gap: 0;
     }
 
-    .section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: border-color .2s;
-    }
-    .section:hover { border-color: rgba(88,166,255,.3); }
-
-    .section-header {
-      display: flex; align-items: center; gap: 14px;
-      padding: 20px 24px;
+    .sec {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 0 24px;
+      padding: 36px 0;
       border-bottom: 1px solid var(--border);
-      background: var(--surface2);
+      opacity: 0; transform: translateY(26px);
+      transition: opacity .55s ease, transform .55s ease;
     }
-    .section-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--accent);
-      background: rgba(88,166,255,.1);
-      border: 1px solid rgba(88,166,255,.2);
-      border-radius: 4px;
-      padding: 2px 8px;
-      flex-shrink: 0;
-    }
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 17px; font-weight: 700;
-      color: var(--text);
-    }
-    .section-icon { font-size: 18px; flex-shrink: 0; }
+    .sec.vis { opacity: 1; transform: none; }
+    .sec:last-child { border-bottom: none; }
 
-    .section-body {
-      padding: 24px;
-      color: #c9d1d9;
-      font-size: 15px;
-      line-height: 1.85;
+    @media(max-width:540px) {
+      .sec { grid-template-columns: 1fr; }
+      .sec-nc { display: none; }
     }
 
-    .section-body p + p { margin-top: 14px; }
+    .sec-nc {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 4px;
+    }
+    .sec-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 58px; line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--border-dark);
+      user-select: none;
+      transition: -webkit-text-stroke-color .3s;
+    }
+    .sec:hover .sec-big { -webkit-text-stroke-color: var(--gold-light); }
+    .sec-vl {
+      flex: 1; width: 1px; margin-top: 6px;
+      background: linear-gradient(to bottom, var(--border), transparent);
+    }
 
-    .section-body a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(88,166,255,.3);
+    .sec-hdr {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .sec-ico {
+      width: 34px; height: 34px;
+      border: 1px solid var(--border);
+      background: var(--paper2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+      transition: background .2s, border-color .2s;
+    }
+    .sec:hover .sec-ico { background: var(--ink); border-color: var(--ink); }
+
+    .sec-t-ar {
+      font-family: 'Amiri', serif; font-weight: 700;
+      font-size: 22px; color: var(--ink); line-height: 1.2;
+    }
+    .sec-t-en {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: 20px; color: var(--ink); line-height: 1.2;
+    }
+    .chev {
+      margin-inline-start: auto;
+      color: var(--muted); flex-shrink: 0;
+      transition: transform .3s, color .2s;
+    }
+    .sec.col .chev { transform: rotate(-90deg); }
+    .sec-hdr:hover .chev { color: var(--gold); }
+
+    .sec-bd {
+      font-size: 16px; color: var(--text2); line-height: 1.95;
+      overflow: hidden; max-height: 1200px; opacity: 1;
+      transition: max-height .4s ease, opacity .35s;
+    }
+    .sec.col .sec-bd { max-height: 0; opacity: 0; }
+    .sec-bd p + p { margin-top: 13px; }
+    .sec-bd a {
+      color: var(--crimson); text-decoration: none;
+      border-bottom: 1px solid rgba(139,26,26,.3);
       transition: border-color .2s;
     }
-    .section-body a:hover { border-color: var(--accent); }
+    .sec-bd a:hover { border-bottom-color: var(--crimson); }
 
-    .tag-list {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin-top: 14px;
-    }
+    /* Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
     .tag {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 12px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-family: 'JetBrains Mono', monospace;
+      padding: 5px 12px; font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px; border: 1px solid;
+      transition: transform .15s, box-shadow .15s;
     }
-    .tag-blue  { background: rgba(88,166,255,.1); color: var(--accent);  border: 1px solid rgba(88,166,255,.2); }
-    .tag-green { background: rgba(63,185,80,.1);  color: var(--accent2); border: 1px solid rgba(63,185,80,.2);  }
-    .tag-gold  { background: rgba(210,153,34,.1); color: var(--gold);    border: 1px solid rgba(210,153,34,.2); }
-    .tag-red   { background: rgba(248,81,73,.1);  color: var(--danger);  border: 1px solid rgba(248,81,73,.2);  }
+    .tag:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(10,8,5,.12); }
+    .t-a { background: rgba(184,134,11,.08);  color: var(--gold);    border-color: rgba(184,134,11,.3); }
+    .t-g { background: rgba(30,90,50,.08);    color: #2a6040;        border-color: rgba(30,90,50,.3); }
+    .t-r { background: rgba(139,26,26,.08);   color: var(--crimson); border-color: rgba(139,26,26,.3); }
+    .t-k { background: rgba(10,8,5,.05);      color: var(--ink);     border-color: var(--border-dark); }
 
-    .info-box {
-      background: rgba(88,166,255,.06);
-      border: 1px solid rgba(88,166,255,.2);
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin-top: 16px;
-      font-size: 14px;
+    /* Callouts */
+    .cl {
+      margin-top: 16px; padding: 14px 18px; font-size: 14px;
+      border-inline-start: 3px solid var(--gold);
+      background: rgba(184,134,11,.05); color: var(--text2);
     }
+    .cl-w { border-inline-start-color: var(--crimson); background: rgba(139,26,26,.04); }
 
-    .warn-box {
-      background: rgba(210,153,34,.06);
-      border: 1px solid rgba(210,153,34,.2);
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin-top: 16px;
-      font-size: 14px;
-      color: #d29922;
+    /* ════════ SCROLL TOP ════════ */
+    #st {
+      position: fixed; bottom: 32px; inset-inline-end: 32px;
+      z-index: 50; width: 44px; height: 44px;
+      border: 1px solid var(--border-dark);
+      background: var(--paper2); color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: all .3s; box-shadow: 0 4px 18px rgba(10,8,5,.14);
     }
+    #st.on { opacity: 1; pointer-events: auto; }
+    #st:hover { background: var(--ink); color: var(--gold-pale); border-color: var(--ink); }
 
-    /* ── Footer ── */
+    /* ════════ FOOTER ════════ */
     footer {
       position: relative; z-index: 1;
       border-top: 1px solid var(--border);
-      background: var(--surface);
+      background: var(--paper2);
     }
-    .footer-inner {
-      max-width: 900px; margin: 0 auto;
-      padding: 32px 24px;
+    .f-orn {
+      text-align: center; padding: 20px 0 0;
+      font-family: 'Amiri', serif; font-size: 26px;
+      color: var(--gold); opacity: .45; letter-spacing: .5em;
+    }
+    .f-in {
+      max-width: 860px; margin: 0 auto;
+      padding: 18px 32px 26px;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
+      flex-wrap: wrap; gap: 10px;
     }
-    .footer-text { font-size: 13px; color: var(--muted); }
-    .footer-text a { color: var(--accent); text-decoration: none; }
+    .ft { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); }
+    .ft a { color: var(--gold); text-decoration: none; }
 
-    /* ── Lang sections ── */
-    [data-lang="en"] { display: none; }
+    /* ════════ LANG CLASSES ════════ */
+    .la, .le { display: none; }
 
-    /* ── Scroll animation ── */
-    .section {
-      opacity: 0; transform: translateY(20px);
-      animation: reveal .5s ease forwards;
+    /* ════════ RESPONSIVE ════════ */
+    @media(max-width:600px){
+      .hero { padding: 44px 20px 36px; }
+      .hero-ghost { font-size: 110px; }
+      .toc-wrap, .content { padding-inline: 20px; }
+      #st { bottom: 18px; inset-inline-end: 14px; }
     }
-    .section:nth-child(1)  { animation-delay: .05s }
-    .section:nth-child(2)  { animation-delay: .10s }
-    .section:nth-child(3)  { animation-delay: .15s }
-    .section:nth-child(4)  { animation-delay: .20s }
-    .section:nth-child(5)  { animation-delay: .25s }
-    .section:nth-child(6)  { animation-delay: .30s }
-    .section:nth-child(7)  { animation-delay: .35s }
-    .section:nth-child(8)  { animation-delay: .40s }
-
-    @keyframes reveal { to { opacity:1; transform:translateY(0); } }
   </style>
 </head>
 <body>
 
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
+<div id="cur"></div>
+<div id="cur-dot"></div>
+<div id="prog"></div>
 
-<!-- Header -->
+<!-- HEADER -->
 <header>
-  <div class="header-inner">
+  <div class="h-in">
     <a href="/" class="logo">
-      <div class="logo-dot"></div>
-      Mohamed Ayman
+      <div class="logo-gem"></div>
+      MOHAMED AYMAN
     </a>
-    <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide" target="_blank" class="gh-link">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-      </svg>
-      GitHub
-    </a>
+    <div class="h-r">
+      <div class="lt">
+        <button class="lb" data-lang="ar" onclick="setLang('ar')">عـر</button>
+        <button class="lb" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide" target="_blank" class="gh">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </div>
   </div>
 </header>
 
-<!-- Hero -->
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">📄 Legal Document</div>
+  <div class="hero-ghost la">٠١</div>
+  <div class="hero-ghost le">PP</div>
 
-  <!-- Lang toggle -->
-  <div class="lang-toggle">
-    <button class="lang-btn active" data-target="ar" onclick="setLang('ar')">العربية</button>
-    <button class="lang-btn" data-target="en" onclick="setLang('en')">English</button>
+  <div class="eyebrow">
+    <div class="e-line"></div>
+    <span class="e-label la">وثيقة قانونية · ٢٠٢٥</span>
+    <span class="e-label le">Legal Document · 2025</span>
   </div>
 
-  <div data-lang="ar">
-    <h1>سياسة <span>الخصوصية</span></h1>
-    <p class="hero-sub">// privacy_policy.md — last updated 2025</p>
-    <div class="hero-meta">
-      <span><div class="dot"></div> Mohamed Ayman — Frappe Developer</span>
-      <span><div class="dot"></div> مفتوح المصدر · Open Source</span>
-    </div>
-  </div>
+  <h1 class="title-ar la">سياسةُ<br>الخصوصيّة</h1>
+  <h1 class="title-en le">Privacy<br><em>Policy</em></h1>
 
-  <div data-lang="en">
-    <h1><span>Privacy</span> Policy</h1>
-    <p class="hero-sub">// privacy_policy.md — last updated 2025</p>
-    <div class="hero-meta">
-      <span><div class="dot"></div> Mohamed Ayman — Frappe Developer</span>
-      <span><div class="dot"></div> Open Source Project</span>
-    </div>
+  <p class="hero-sub">// privacy_policy.md — Mohamed Ayman — Frappe Developer</p>
+
+  <div class="hero-meta">
+    <span class="hm la">مفتوح المصدر</span>
+    <span class="hm le">Open Source</span>
+    <span class="hm">GitHub Pages</span>
+    <span class="hm la">بدون بيانات حساسة</span>
+    <span class="hm le">No Sensitive Data</span>
   </div>
 </div>
 
+<!-- ORNAMENT -->
+<div class="div-orn" style="padding-top:28px">
+  <div class="div-l"></div>
+  <div class="div-c">❧</div>
+  <div class="div-l"></div>
+</div>
+
 <!-- TOC -->
-<div class="toc">
+<div class="toc-wrap">
   <div class="toc-box">
-    <div class="toc-title" data-lang="ar">// فهرس المحتويات</div>
-    <div class="toc-title" data-lang="en" style="display:none">// table of contents</div>
-    <ul class="toc-list">
-      <li><a href="#s1"><span class="toc-num">01</span> <span data-lang="ar">المعلومات التي نجمعها</span><span data-lang="en">Information We Collect</span></a></li>
-      <li><a href="#s2"><span class="toc-num">02</span> <span data-lang="ar">كيف نستخدم المعلومات</span><span data-lang="en">How We Use Information</span></a></li>
-      <li><a href="#s3"><span class="toc-num">03</span> <span data-lang="ar">ملفات تعريف الارتباط</span><span data-lang="en">Cookies</span></a></li>
-      <li><a href="#s4"><span class="toc-num">04</span> <span data-lang="ar">مشاركة البيانات</span><span data-lang="en">Data Sharing</span></a></li>
-      <li><a href="#s5"><span class="toc-num">05</span> <span data-lang="ar">حقوقك</span><span data-lang="en">Your Rights</span></a></li>
-      <li><a href="#s6"><span class="toc-num">06</span> <span data-lang="ar">الاتصال بنا</span><span data-lang="en">Contact</span></a></li>
+    <div class="toc-h la">فهرس المحتويات</div>
+    <div class="toc-h le">Table of Contents</div>
+    <ul class="toc-g">
+      <li><a href="#s1"><span class="toc-n">01</span><span class="la">المعلومات التي نجمعها</span><span class="le">Information We Collect</span></a></li>
+      <li><a href="#s2"><span class="toc-n">02</span><span class="la">كيف نستخدم المعلومات</span><span class="le">How We Use Information</span></a></li>
+      <li><a href="#s3"><span class="toc-n">03</span><span class="la">ملفات تعريف الارتباط</span><span class="le">Cookies</span></a></li>
+      <li><a href="#s4"><span class="toc-n">04</span><span class="la">مشاركة البيانات</span><span class="le">Data Sharing</span></a></li>
+      <li><a href="#s5"><span class="toc-n">05</span><span class="la">حقوقك</span><span class="le">Your Rights</span></a></li>
+      <li><a href="#s6"><span class="toc-n">06</span><span class="la">التواصل</span><span class="le">Contact</span></a></li>
     </ul>
   </div>
 </div>
 
-<!-- Content -->
+<!-- CONTENT -->
 <main class="content">
 
   <!-- 01 -->
-  <div class="section" id="s1">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <span class="section-icon">📦</span>
-      <h2 class="section-title">
-        <span data-lang="ar">المعلومات التي نجمعها</span>
-        <span data-lang="en">Information We Collect</span>
-      </h2>
-    </div>
-    <div class="section-body">
-      <div data-lang="ar">
-        <p>عند زيارتك لهذا الموقع، قد يتم جمع بعض المعلومات تلقائياً لتحسين تجربتك وضمان أداء الموقع بشكل صحيح.</p>
-        <p>تشمل المعلومات التي قد نجمعها:</p>
-        <div class="tag-list">
-          <span class="tag tag-blue">🌐 عنوان IP</span>
-          <span class="tag tag-blue">🖥 نوع المتصفح</span>
-          <span class="tag tag-blue">📱 نوع الجهاز</span>
-          <span class="tag tag-green">📍 الموقع الجغرافي التقريبي</span>
-          <span class="tag tag-green">⏱ وقت الزيارة</span>
-          <span class="tag tag-green">📄 الصفحات المُزارة</span>
-          <span class="tag tag-gold">🔗 مصدر الزيارة (Referrer)</span>
-        </div>
-        <div class="info-box">
-          💡 هذا الموقع مشروع مفتوح المصدر تعليمي — لا يتم جمع بيانات شخصية حساسة كالأسماء أو البريد الإلكتروني أو بيانات الدفع.
-        </div>
+  <div class="sec" id="s1">
+    <div class="sec-nc"><div class="sec-big">01</div><div class="sec-vl"></div></div>
+    <div>
+      <div class="sec-hdr" onclick="tog(this)">
+        <div class="sec-ico">📦</div>
+        <h2 class="sec-t-ar la">المعلومات التي نجمعها</h2>
+        <h2 class="sec-t-en le">Information We Collect</h2>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
       </div>
-      <div data-lang="en">
-        <p>When you visit this website, some information may be collected automatically to improve your experience and ensure the site functions correctly.</p>
-        <p>Information that may be collected includes:</p>
-        <div class="tag-list">
-          <span class="tag tag-blue">🌐 IP Address</span>
-          <span class="tag tag-blue">🖥 Browser Type</span>
-          <span class="tag tag-blue">📱 Device Type</span>
-          <span class="tag tag-green">📍 Approximate Location</span>
-          <span class="tag tag-green">⏱ Visit Time</span>
-          <span class="tag tag-green">📄 Pages Visited</span>
-          <span class="tag tag-gold">🔗 Referrer Source</span>
+      <div class="sec-bd">
+        <p class="la">عند زيارتك لهذا الموقع، قد يتم جمع بعض المعلومات تلقائياً لتحسين تجربتك وضمان أداء الموقع بشكل صحيح. لا نجمع أي بيانات شخصية حساسة.</p>
+        <p class="le">When you visit this website, some information may be collected automatically to improve your experience. No sensitive personal data is collected.</p>
+        <div class="tags">
+          <span class="tag t-k">🌐 <span class="la">عنوان IP</span><span class="le">IP Address</span></span>
+          <span class="tag t-k">🖥 <span class="la">نوع المتصفح</span><span class="le">Browser Type</span></span>
+          <span class="tag t-k">📱 <span class="la">نوع الجهاز</span><span class="le">Device Type</span></span>
+          <span class="tag t-a">📍 <span class="la">الموقع التقريبي</span><span class="le">Approx. Location</span></span>
+          <span class="tag t-a">⏱ <span class="la">وقت الزيارة</span><span class="le">Visit Time</span></span>
+          <span class="tag t-a">📄 <span class="la">الصفحات المُزارة</span><span class="le">Pages Visited</span></span>
+          <span class="tag t-a">🔗 <span class="la">مصدر الزيارة</span><span class="le">Referrer</span></span>
         </div>
-        <div class="info-box">
-          💡 This is an open-source educational project — no sensitive personal data such as names, emails, or payment details is collected.
-        </div>
+        <div class="cl">💡 <span class="la">مشروع مفتوح المصدر تعليمي — لا يتم جمع أسماء أو بريد إلكتروني أو بيانات دفع.</span><span class="le">Open-source educational project — no names, emails, or payment data collected.</span></div>
       </div>
     </div>
   </div>
 
   <!-- 02 -->
-  <div class="section" id="s2">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-icon">⚙️</span>
-      <h2 class="section-title">
-        <span data-lang="ar">كيف نستخدم المعلومات</span>
-        <span data-lang="en">How We Use Information</span>
-      </h2>
-    </div>
-    <div class="section-body">
-      <div data-lang="ar">
-        <p>المعلومات التي يتم جمعها تُستخدم فقط للأغراض التالية:</p>
-        <div class="tag-list">
-          <span class="tag tag-green">✅ تحليل أداء الموقع</span>
-          <span class="tag tag-green">✅ فهم سلوك الزوار لتحسين المحتوى</span>
-          <span class="tag tag-green">✅ كشف المشكلات التقنية</span>
-          <span class="tag tag-red">❌ لا يتم بيع البيانات</span>
-          <span class="tag tag-red">❌ لا يتم مشاركتها مع طرف ثالث تجاري</span>
-        </div>
+  <div class="sec" id="s2">
+    <div class="sec-nc"><div class="sec-big">02</div><div class="sec-vl"></div></div>
+    <div>
+      <div class="sec-hdr" onclick="tog(this)">
+        <div class="sec-ico">⚙️</div>
+        <h2 class="sec-t-ar la">كيف نستخدم المعلومات</h2>
+        <h2 class="sec-t-en le">How We Use Information</h2>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
       </div>
-      <div data-lang="en">
-        <p>Collected information is used only for the following purposes:</p>
-        <div class="tag-list">
-          <span class="tag tag-green">✅ Analyzing site performance</span>
-          <span class="tag tag-green">✅ Understanding visitor behavior to improve content</span>
-          <span class="tag tag-green">✅ Detecting technical issues</span>
-          <span class="tag tag-red">❌ Data is never sold</span>
-          <span class="tag tag-red">❌ Not shared with commercial third parties</span>
+      <div class="sec-bd">
+        <p class="la">المعلومات المجمَّعة تُستخدم حصراً للأغراض التالية:</p>
+        <p class="le">Collected information is used exclusively for the following purposes:</p>
+        <div class="tags">
+          <span class="tag t-g">✅ <span class="la">تحليل أداء الموقع</span><span class="le">Site performance</span></span>
+          <span class="tag t-g">✅ <span class="la">تحسين المحتوى</span><span class="le">Content improvement</span></span>
+          <span class="tag t-g">✅ <span class="la">كشف المشكلات التقنية</span><span class="le">Bug detection</span></span>
+          <span class="tag t-r">❌ <span class="la">لا يتم بيع البيانات</span><span class="le">Data never sold</span></span>
+          <span class="tag t-r">❌ <span class="la">لا مشاركة تجارية</span><span class="le">No commercial sharing</span></span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- 03 -->
-  <div class="section" id="s3">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <span class="section-icon">🍪</span>
-      <h2 class="section-title">
-        <span data-lang="ar">ملفات تعريف الارتباط (Cookies)</span>
-        <span data-lang="en">Cookies</span>
-      </h2>
-    </div>
-    <div class="section-body">
-      <div data-lang="ar">
-        <p>يستخدم هذا الموقع ملفات تعريف الارتباط (Cookies) لتحسين تجربة المستخدم. عند زيارتك للموقع لأول مرة، سيظهر لك إشعار يتيح لك التحكم في تفضيلاتك.</p>
-        <div class="tag-list">
-          <span class="tag tag-blue">🔒 ضرورية — لتشغيل الموقع</span>
-          <span class="tag tag-gold">📊 تحليلية — لفهم سلوك الزوار</span>
-          <span class="tag tag-red">📢 تسويقية — اختياري</span>
-        </div>
-        <div class="warn-box">
-          ⚠️ يمكنك رفض الكوكيز غير الضرورية في أي وقت عبر إعدادات المتصفح أو من خلال إشعار الكوكيز في أسفل الصفحة.
-        </div>
+  <div class="sec" id="s3">
+    <div class="sec-nc"><div class="sec-big">03</div><div class="sec-vl"></div></div>
+    <div>
+      <div class="sec-hdr" onclick="tog(this)">
+        <div class="sec-ico">🍪</div>
+        <h2 class="sec-t-ar la">ملفات تعريف الارتباط</h2>
+        <h2 class="sec-t-en le">Cookies</h2>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
       </div>
-      <div data-lang="en">
-        <p>This website uses cookies to enhance the user experience. When you first visit, a notice will appear allowing you to control your preferences.</p>
-        <div class="tag-list">
-          <span class="tag tag-blue">🔒 Necessary — for site operation</span>
-          <span class="tag tag-gold">📊 Analytics — for understanding visitors</span>
-          <span class="tag tag-red">📢 Marketing — optional</span>
+      <div class="sec-bd">
+        <p class="la">يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربة المستخدم. يمكنك التحكم في تفضيلاتك في أي وقت.</p>
+        <p class="le">This website uses cookies to enhance the user experience. You can control your preferences at any time.</p>
+        <div class="tags">
+          <span class="tag t-k">🔒 <span class="la">ضرورية</span><span class="le">Necessary</span></span>
+          <span class="tag t-a">📊 <span class="la">تحليلية</span><span class="le">Analytics</span></span>
+          <span class="tag t-r">📢 <span class="la">تسويقية — اختياري</span><span class="le">Marketing — optional</span></span>
         </div>
-        <div class="warn-box">
-          ⚠️ You can reject non-essential cookies at any time via your browser settings or through the cookie notice at the bottom of the page.
-        </div>
+        <div class="cl cl-w">⚠️ <span class="la">يمكنك رفض الكوكيز غير الضرورية عبر إعدادات المتصفح في أي وقت.</span><span class="le">You can reject non-essential cookies at any time via your browser settings.</span></div>
       </div>
     </div>
   </div>
 
   <!-- 04 -->
-  <div class="section" id="s4">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <span class="section-icon">🔗</span>
-      <h2 class="section-title">
-        <span data-lang="ar">مشاركة البيانات</span>
-        <span data-lang="en">Data Sharing</span>
-      </h2>
-    </div>
-    <div class="section-body">
-      <div data-lang="ar">
-        <p>لا يتم مشاركة بياناتك الشخصية مع أطراف ثالثة، باستثناء ما يلي:</p>
-        <p><strong style="color:var(--text)">GitHub:</strong> هذا المشروع مستضاف على GitHub Pages. تخضع بيانات الاستخدام لـ <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank">سياسة خصوصية GitHub</a>.</p>
-        <div class="info-box">
-          💡 لا توجد خوادم خاصة، ولا قواعد بيانات، ولا يتم تخزين بياناتك على أي خادم نمتلكه.
-        </div>
+  <div class="sec" id="s4">
+    <div class="sec-nc"><div class="sec-big">04</div><div class="sec-vl"></div></div>
+    <div>
+      <div class="sec-hdr" onclick="tog(this)">
+        <div class="sec-ico">🔗</div>
+        <h2 class="sec-t-ar la">مشاركة البيانات</h2>
+        <h2 class="sec-t-en le">Data Sharing</h2>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
       </div>
-      <div data-lang="en">
-        <p>Your personal data is not shared with third parties, except for the following:</p>
-        <p><strong style="color:var(--text)">GitHub:</strong> This project is hosted on GitHub Pages. Usage data is subject to <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank">GitHub's Privacy Statement</a>.</p>
-        <div class="info-box">
-          💡 No private servers, no databases — your data is not stored on any server we own.
-        </div>
+      <div class="sec-bd">
+        <p class="la">لا تتم مشاركة بياناتك مع أطراف ثالثة، باستثناء:</p>
+        <p class="le">Your data is not shared with third parties, except:</p>
+        <p style="margin-top:14px">
+          <strong style="font-family:'IBM Plex Mono',monospace;font-size:13px">GitHub Pages</strong>
+          <span style="margin-inline-start:8px"><span class="la">— تخضع بيانات الاستخدام لـ </span><span class="le">— usage data is subject to </span><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank"><span class="la">سياسة خصوصية GitHub</span><span class="le">GitHub's Privacy Statement</span></a></span>
+        </p>
+        <div class="cl">💡 <span class="la">لا خوادم خاصة · لا قواعد بيانات · لا تخزين على أي خادم نمتلكه.</span><span class="le">No private servers · No databases · No storage on any server we own.</span></div>
       </div>
     </div>
   </div>
 
   <!-- 05 -->
-  <div class="section" id="s5">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <span class="section-icon">⚖️</span>
-      <h2 class="section-title">
-        <span data-lang="ar">حقوقك</span>
-        <span data-lang="en">Your Rights</span>
-      </h2>
-    </div>
-    <div class="section-body">
-      <div data-lang="ar">
-        <p>وفقاً للوائح حماية البيانات (GDPR وما يعادلها)، لديك الحق في:</p>
-        <div class="tag-list">
-          <span class="tag tag-green">👁 الوصول إلى بياناتك</span>
-          <span class="tag tag-green">✏️ تصحيح بياناتك</span>
-          <span class="tag tag-green">🗑 حذف بياناتك</span>
-          <span class="tag tag-green">🚫 الاعتراض على المعالجة</span>
-          <span class="tag tag-blue">📦 نقل البيانات</span>
-        </div>
-        <p style="margin-top:16px">لممارسة أي من هذه الحقوق، يرجى التواصل معنا عبر GitHub.</p>
+  <div class="sec" id="s5">
+    <div class="sec-nc"><div class="sec-big">05</div><div class="sec-vl"></div></div>
+    <div>
+      <div class="sec-hdr" onclick="tog(this)">
+        <div class="sec-ico">⚖️</div>
+        <h2 class="sec-t-ar la">حقوقك</h2>
+        <h2 class="sec-t-en le">Your Rights</h2>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
       </div>
-      <div data-lang="en">
-        <p>Under data protection regulations (GDPR and equivalents), you have the right to:</p>
-        <div class="tag-list">
-          <span class="tag tag-green">👁 Access your data</span>
-          <span class="tag tag-green">✏️ Correct your data</span>
-          <span class="tag tag-green">🗑 Delete your data</span>
-          <span class="tag tag-green">🚫 Object to processing</span>
-          <span class="tag tag-blue">📦 Data portability</span>
+      <div class="sec-bd">
+        <p class="la">وفقاً للائحة GDPR وما يعادلها، لديك الحق في:</p>
+        <p class="le">Under GDPR and equivalent regulations, you have the right to:</p>
+        <div class="tags">
+          <span class="tag t-g">👁 <span class="la">الوصول</span><span class="le">Access</span></span>
+          <span class="tag t-g">✏️ <span class="la">التصحيح</span><span class="le">Rectification</span></span>
+          <span class="tag t-g">🗑 <span class="la">الحذف</span><span class="le">Erasure</span></span>
+          <span class="tag t-g">🚫 <span class="la">الاعتراض</span><span class="le">Objection</span></span>
+          <span class="tag t-a">📦 <span class="la">نقل البيانات</span><span class="le">Portability</span></span>
         </div>
-        <p style="margin-top:16px">To exercise any of these rights, please contact us via GitHub.</p>
+        <p style="margin-top:15px"><span class="la">لممارسة أي من هذه الحقوق، تواصل معنا عبر GitHub Issues.</span><span class="le">To exercise any of these rights, contact us via GitHub Issues.</span></p>
       </div>
     </div>
   </div>
 
   <!-- 06 -->
-  <div class="section" id="s6">
-    <div class="section-header">
-      <span class="section-num">06</span>
-      <span class="section-icon">📬</span>
-      <h2 class="section-title">
-        <span data-lang="ar">التواصل</span>
-        <span data-lang="en">Contact</span>
-      </h2>
-    </div>
-    <div class="section-body">
-      <div data-lang="ar">
-        <p>إذا كان لديك أي استفسار بخصوص سياسة الخصوصية، يمكنك التواصل عبر:</p>
-        <div class="tag-list" style="margin-top:16px">
-          <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide/issues" target="_blank" class="tag tag-blue" style="text-decoration:none">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub Issues
-          </a>
-          <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide" target="_blank" class="tag tag-gold" style="text-decoration:none">
-            📂 Frappe Guide Repo
-          </a>
-        </div>
+  <div class="sec" id="s6">
+    <div class="sec-nc"><div class="sec-big">06</div><div class="sec-vl"></div></div>
+    <div>
+      <div class="sec-hdr" onclick="tog(this)">
+        <div class="sec-ico">📬</div>
+        <h2 class="sec-t-ar la">التواصل</h2>
+        <h2 class="sec-t-en le">Contact</h2>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
       </div>
-      <div data-lang="en">
-        <p>If you have any questions about this privacy policy, you can reach out via:</p>
-        <div class="tag-list" style="margin-top:16px">
-          <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide/issues" target="_blank" class="tag tag-blue" style="text-decoration:none">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      <div class="sec-bd">
+        <p class="la">لأي استفسار بخصوص سياسة الخصوصية:</p>
+        <p class="le">For any questions about this privacy policy:</p>
+        <div class="tags" style="margin-top:16px">
+          <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide/issues" target="_blank" class="tag t-k" style="text-decoration:none">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             GitHub Issues
           </a>
-          <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide" target="_blank" class="tag tag-gold" style="text-decoration:none">
-            📂 Frappe Guide Repo
-          </a>
+          <a href="https://github.com/MikeeeDeV/Frappe-Web-Development-Guide" target="_blank" class="tag t-a" style="text-decoration:none">📂 Frappe Guide Repo</a>
         </div>
       </div>
     </div>
@@ -607,47 +658,80 @@
 
 </main>
 
-<!-- Footer -->
+<button id="st" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 10 8 6 12 10"/></svg>
+</button>
+
 <footer>
-  <div class="footer-inner">
-    <span class="footer-text">
-      © 2025 <a href="https://github.com/MikeeeDeV">Mohamed Ayman</a> · MIT License
-    </span>
-    <span class="footer-text" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#3fb950">
-      // open source · مفتوح المصدر
-    </span>
+  <div class="f-orn">· · · ✦ · · ·</div>
+  <div class="f-in">
+    <span class="ft">© 2025 <a href="https://github.com/MikeeeDeV">Mohamed Ayman</a> · MIT License</span>
+    <span class="ft" style="color:var(--gold)">// open source · مفتوح المصدر</span>
   </div>
 </footer>
 
 <script>
-  function setLang(lang) {
-    // Show/hide lang-specific blocks (only direct [data-lang] children, not nested shared elements)
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      // Only toggle if element itself has data-lang (not inherited)
-      if (el.hasAttribute('data-lang')) {
-        const show = el.getAttribute('data-lang') === lang;
-        el.style.display = show ? '' : 'none';
-      }
-    });
+  /* CURSOR */
+  const cur = document.getElementById('cur');
+  const dot = document.getElementById('cur-dot');
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+    dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a,button,.sec-hdr,.toc-g a').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('h'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('h'));
+  });
 
-    // Active button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-target') === lang);
-    });
+  /* LANGUAGE */
+  let lang = localStorage.getItem('lp') || 'ar';
 
-    // RTL/LTR
-    document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = lang;
-
-    // Save preference
-    localStorage.setItem('lang_pref', lang);
+  function getDisplay(el) {
+    const t = el.tagName;
+    if (t === 'SPAN' || t === 'P' || t === 'H1' || t === 'H2') return 'inline';
+    return 'block';
   }
 
-  // On load — restore preference or default to ar
-  (function() {
-    const saved = localStorage.getItem('lang_pref') || 'ar';
-    setLang(saved);
-  })();
+  function setLang(l) {
+    lang = l;
+    document.querySelectorAll('.la').forEach(el =>
+      el.style.display = l === 'ar' ? getDisplay(el) : 'none'
+    );
+    document.querySelectorAll('.le').forEach(el =>
+      el.style.display = l === 'en' ? getDisplay(el) : 'none'
+    );
+    document.querySelectorAll('.lb').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === l)
+    );
+    document.documentElement.dir  = l === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = l;
+    localStorage.setItem('lp', l);
+  }
+
+  /* COLLAPSIBLE */
+  function tog(hdr) { hdr.closest('.sec').classList.toggle('col'); }
+
+  /* SCROLL */
+  const prog = document.getElementById('prog');
+  const st   = document.getElementById('st');
+  window.addEventListener('scroll', () => {
+    const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    prog.style.width = p + '%';
+    st.classList.toggle('on', window.scrollY > 400);
+  }, { passive: true });
+
+  /* REVEAL */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.sec').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.08) + 's';
+    io.observe(el);
+  });
+
+  /* INIT */
+  setLang(lang);
 </script>
+<script src="/using-statics/user-data-to-tm.js"></script>
 </body>
 </html>
