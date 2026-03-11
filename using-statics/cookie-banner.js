@@ -134,7 +134,7 @@
             <p id="cb-desc">
               نستخدم الكوكيز لتحسين تجربتك وتحليل زيارات الموقع.
               بإمكانك التحكم في اختياراتك أو قبولها جميعاً.
-              <a href="/privacy">سياسة الخصوصية</a>
+              <a href="/policy/policy.html">سياسة الخصوصية</a>
             </p>
             <div id="cb-tabs">
               <button class="cb-tab active" data-tab="simple">ملخص</button>
