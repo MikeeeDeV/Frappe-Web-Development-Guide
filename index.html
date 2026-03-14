@@ -750,7 +750,9 @@ h1 { color: red; }</pre>
                 ready: cb => document.addEventListener('DOMContentLoaded', cb),
                 call: () => {}, msgprint: () => {}, throw: msg => console.error(msg),
                 show_alert: () => {}, confirm: () => {}, session: { user: 'Guest' },
-                boot: {}, realtime: { on: () => {} }, db: { insert: () => Promise.resolve(), set_value: () => Promise.resolve(), delete: () => Promise.resolve() }
+                boot: {}, realtime: { on: () => {} },
+                db: { insert: () => Promise.resolve(), set_value: () => Promise.resolve(), delete: () => Promise.resolve() },
+                ui: { form: { ScriptManager: null } }
             };
             window.__ = s => s;
         }
