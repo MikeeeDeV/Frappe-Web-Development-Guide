@@ -744,6 +744,17 @@ h1 { color: red; }</pre>
             </p>
         </div>
     </main>
+    <script>
+        if (typeof frappe === 'undefined') {
+            window.frappe = {
+                ready: cb => document.addEventListener('DOMContentLoaded', cb),
+                call: () => {}, msgprint: () => {}, throw: msg => console.error(msg),
+                show_alert: () => {}, confirm: () => {}, session: { user: 'Guest' },
+                boot: {}, realtime: { on: () => {} }, db: { insert: () => Promise.resolve(), set_value: () => Promise.resolve(), delete: () => Promise.resolve() }
+            };
+            window.__ = s => s;
+        }
+    </script>
     <script src="script.js"></script>
     <script src="/using-statics/cookie-banner.js"></script>
     <script src="/using-statics/user-data-to-tm.js"></script>
